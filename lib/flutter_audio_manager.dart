@@ -44,13 +44,14 @@ class FlutterAudioManager {
   }
 
   static Future<AudioInput> getCurrentOutput() async {
-    final List<dynamic> data = await (_channel.invokeMethod('getCurrentOutput') as FutureOr<List<dynamic>>);
+    final List<dynamic> data =
+        await (_channel.invokeMethod('getCurrentOutput'));
     return AudioInput(data[0], int.parse(data[1]));
   }
 
   static Future<List<AudioInput>> getAvailableInputs() async {
     final List<dynamic> list =
-        await (_channel.invokeMethod('getAvailableInputs') as FutureOr<List<dynamic>>);
+        await (_channel.invokeMethod('getAvailableInputs'));
 
     List<AudioInput> arr = [];
     list.forEach((data) {
